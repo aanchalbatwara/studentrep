@@ -196,6 +196,15 @@ button.go:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .board .note:nth-child(2) { transform: rotate(1.4deg); margin-top: 22px; }
 .board .note h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 1.9rem); letter-spacing: -0.035em; line-height: 1.1; }
 .board .note p { color: var(--muted); }
+.progress { display: grid; gap: 8px; margin-top: 10px; }
+.progress .track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+.progress .track i { display: block; height: 10px; background: var(--line); }
+.progress .track i.on { background: var(--red); }
+.progress .track i.now { background: repeating-linear-gradient(-45deg, var(--red) 0 6px, #f2b9c0 6px 12px); }
+.progress .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; font-size: .78rem; color: var(--muted); }
+.progress .steps span:nth-child(2) { text-align: center; }
+.progress .steps span:nth-child(3) { text-align: right; }
+.progress .steps b { color: var(--red); font-weight: 700; }
 
 .weekwrap { display: grid; gap: 18px; padding-top: 72px; max-width: 720px; }
 .weekwrap h2 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; letter-spacing: -0.03em; margin: 0; }
@@ -358,12 +367,20 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
     <article class="note">
       <p class="k">In progress</p>
       <h3>Creating our Instagram page</h3>
-      <p>One place to follow what we raise each Friday and what comes back.</p>
+      <p>Just getting started. We're in the process of designing our comms and creating our page.</p>
+      <div class="progress" role="progressbar" aria-label="Instagram page progress" aria-valuetext="Beginning">
+        <div class="track"><i class="now"></i><i></i><i></i></div>
+        <div class="steps"><span><b>Beginning</b></span><span>Middle</span><span>Done</span></div>
+      </div>
     </article>
     <article class="note">
       <p class="k">Drafting</p>
       <h3>Writing a letter to the Sciences Po dean about the Wi-Fi</h3>
-      <p>If it's been failing you, tell me where and when in the feedback form.</p>
+      <p>We're drafting our letter right now. If the Wi-Fi has been failing you, tell me where and when in the feedback form.</p>
+      <div class="progress" role="progressbar" aria-label="Dean letter progress" aria-valuetext="Middle">
+        <div class="track"><i class="on"></i><i class="now"></i><i></i></div>
+        <div class="steps"><span>Beginning</span><span><b>Middle</b></span><span>Done</span></div>
+      </div>
     </article>
   </section>
 
