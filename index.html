@@ -63,6 +63,8 @@ p { margin: 0; }
 .mast nav button:hover { opacity: 1; }
 .mast nav button[aria-current="page"] { opacity: 1; border-bottom-color: #fff; }
 .mast nav button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.mast nav .lang { opacity: 1; font-weight: 600; padding: 2px 10px; border: 1.5px solid rgba(255,255,255,.75); border-bottom-width: 1.5px; }
+.mast nav .lang:hover { background: #fff; color: var(--red); }
 
 /* ---------- headline row ---------- */
 .top {
@@ -271,11 +273,12 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
 
 <header class="mast">
   <div class="page">
-    <p class="who">Aanchal Batwara <span>· Student rep, 1A · Sciences Po, Campus de Reims</span></p>
+    <p class="who">Aanchal Batwara <span data-i18n="who">· Student rep, 1A · Sciences Po, Campus de Reims</span></p>
     <nav aria-label="Pages">
-      <button type="button" id="tab-feedback" data-view="feedback">Feedback</button>
-      <button type="button" id="tab-updates" data-view="updates">What we're doing</button>
-      <button type="button" id="tab-reps" data-view="reps">Meet your reps</button>
+      <button type="button" id="tab-feedback" data-view="feedback" data-i18n="tabFeedback">Feedback</button>
+      <button type="button" id="tab-updates" data-view="updates" data-i18n="tabUpdates">What we're doing</button>
+      <button type="button" id="tab-reps" data-view="reps" data-i18n="tabReps">Meet your reps</button>
+      <button type="button" class="lang" id="lang" lang="fr">Français</button>
     </nav>
   </div>
 </header>
@@ -284,71 +287,71 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
 <main id="view-feedback" class="page">
 
   <section class="top">
-    <h1>How is college <span class="mark">actually<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 35 3, 70 13, 105 7 S 165 3, 197 8"/></svg></span> going?</h1>
+    <h1 data-i18n="h1Feedback">How is college <span class="mark">actually<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 35 3, 70 13, 105 7 S 165 3, 197 8"/></svg></span> going?</h1>
 
     <aside class="note" aria-label="This week's deadline">
-      <p class="k">This week's batch closes in</p>
+      <p class="k" data-i18n="closesIn">This week's batch closes in</p>
       <p class="big" id="left">--</p>
       <p class="sub" id="cutline">Thursday, 23:59</p>
       <div class="rule"></div>
-      <p class="fine">On <b id="friday">Friday</b> I take everything to administration. After that, your concerns will be addressed the following week.</p>
+      <p class="fine" data-i18n="fine">On <b id="friday">Friday</b> I take everything to administration. After that, your concerns will be addressed the following week.</p>
     </aside>
   </section>
 
   <section class="body">
     <div class="letter">
-      <p class="lead">Put your raw, unfiltered comments here. I'm honestly kind of overwhelmed myself, so I really appreciate the most honest feedback you can give me.</p>
-      <p class="more">This isn't a Google Form (it's my personal GitHub with no connection/sharing settings with Sciences Po) and I'm not collecting your personal info.</p>
-      <p class="more">Nothing you write will be taken against you. With that, please add your name, so I can reach out for more detail if needed. I'm here to support you シ </p>
+      <p class="lead" data-i18n="lead">Put your raw, unfiltered comments here. I'm honestly kind of overwhelmed myself, so I really appreciate the most honest feedback you can give me.</p>
+      <p class="more" data-i18n="more1">This isn't a Google Form (it's my personal GitHub with no connection/sharing settings with Sciences Po) and I'm not collecting your personal info.</p>
+      <p class="more" data-i18n="more2">Nothing you write will be taken against you. With that, please add your name, so I can reach out for more detail if needed. I'm here to support you シ </p>
       <div class="sig">
         <span class="hand">Aanchal</span>
-        <span class="role">Student rep, 1A Reims 2026–27</span>
+        <span class="role" data-i18n="sigRole">Student rep, 1A Reims 2026–27</span>
       </div>
     </div>
 
     <div class="sheet">
       <form id="fb" novalidate>
         <div class="part">
-          <h2>Already on the list</h2>
-          <p class="help">Tap anything that has impacted you too.</p>
+          <h2 data-i18n="onList">Already on the list</h2>
+          <p class="help" data-i18n="tapHelp">Tap anything that has impacted you too.</p>
           <ul class="checks">
-            <li><label class="check" for="i1"><input type="checkbox" id="i1" name="issues" value="5-minute break in 2-hour classes"><span><span class="t">Atleast a 5-minute break in 2-hour classes</span><span class="d">At least one, every class.</span></span></label></li>
-            <li><label class="check" for="i2"><input type="checkbox" id="i2" name="issues" value="History quiz timing"><span><span class="t">History quizzes at the end of class, or after 30 minutes</span><span class="d">So the instructor can answer questions before we're tested.</span></span></label></li>
-            <li><label class="check" for="i3"><input type="checkbox" id="i3" name="issues" value="Seminars not matching lecture (ConLaw / PoliSci / LENC)"><span><span class="t">Seminars that don't match lecture</span><span class="d">ConLaw, Political Science and LENC seminars aren't covering what we do in lecture.</span></span></label></li>
-            <li><label class="check" for="i4"><input type="checkbox" id="i4" name="issues" value="48-hour notice for class reschedules"><span><span class="t">Reschedules posted 48 hours ahead, not the day before</span><span class="d">People have conflicts and need time to sort them out. Already raised with LSC by email.</span></span></label></li>
+            <li><label class="check" for="i1"><input type="checkbox" id="i1" name="issues" value="5-minute break in 2-hour classes"><span><span class="t" data-i18n="i1t">ATLEAST a 5-minute break in 2-hour classes</span><span class="d" data-i18n="i1d">At least one, every class.</span></span></label></li>
+            <li><label class="check" for="i2"><input type="checkbox" id="i2" name="issues" value="History quiz timing"><span><span class="t" data-i18n="i2t">History quizzes at the end of class, or after 30 minutes</span><span class="d" data-i18n="i2d">So the instructor can answer questions before we're tested.</span></span></label></li>
+            <li><label class="check" for="i3"><input type="checkbox" id="i3" name="issues" value="Seminars not matching lecture (ConLaw / PoliSci / LENC)"><span><span class="t" data-i18n="i3t">Seminars that don't match lecture</span><span class="d" data-i18n="i3d">ConLaw, Political Science and LENC seminars aren't covering what we do in lecture.</span></span></label></li>
+            <li><label class="check" for="i4"><input type="checkbox" id="i4" name="issues" value="48-hour notice for class reschedules"><span><span class="t" data-i18n="i4t">Reschedules posted 48 hours ahead, not the day before</span><span class="d" data-i18n="i4d">People have conflicts and need time to sort them out. Already raised with LSC by email.</span></span></label></li>
           </ul>
           <p class="count" id="count"></p>
         </div>
 
         <div class="field">
-          <label for="comment">What's going on?</label>
-          <p class="help">A class, a policy, workload, campus life? Please be as specific as you can!</p>
-          <textarea id="comment" name="comment" placeholder="Start typing…"></textarea>
+          <label for="comment" data-i18n="qComment">What's going on?</label>
+          <p class="help" data-i18n="qCommentHelp">A class, a policy, workload, campus life? Please be as specific as you can!</p>
+          <textarea id="comment" name="comment" placeholder="Start typing…" data-i18n-ph="phComment"></textarea>
         </div>
 
         <div class="field">
-          <label for="fix">Are there any solutions you think could fix it? <span class="opt">optional</span></label>
+          <label for="fix" data-i18n="qFix">Are there any solutions you think could fix it? <span class="opt">optional</span></label>
           <textarea id="fix" name="fix" class="short"></textarea>
         </div>
 
         <div class="field">
-          <label for="name">Your name <span class="opt">so I can follow up</span></label>
-          <input type="text" id="name" name="name" autocomplete="name" placeholder="First and last">
+          <label for="name" data-i18n="qName">Your name <span class="opt">so I can follow up</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="First and last" data-i18n-ph="phName">
         </div>
 
         <div class="hp" aria-hidden="true"><label for="_gotcha">Leave empty</label><input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
 
         <div class="send">
-          <button type="submit" class="go" id="send"><span>Send to Aanchal</span><span class="arr">→</span></button>
+          <button type="submit" class="go" id="send"><span data-i18n="send">Send to Aanchal</span><span class="arr">→</span></button>
           <p class="status" id="status" role="status"></p>
         </div>
       </form>
 
       <div class="done" id="done" hidden>
         <span class="hand">merci!</span>
-        <h3>Got it. This goes to admin on <span id="done-day">Friday</span>.</h3>
-        <p>If you left your name I may message you for details.</p>
-        <button type="button" class="linkbtn" id="again">Send another</button>
+        <h3 data-i18n="doneH">Got it. This goes to admin on <span id="done-day">Friday</span>.</h3>
+        <p data-i18n="doneP">If you left your name I may message you for details.</p>
+        <button type="button" class="linkbtn" id="again" data-i18n="again">Send another</button>
       </div>
     </div>
   </section>
@@ -358,37 +361,37 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
 <main id="view-updates" class="page" hidden>
   <section class="top" style="grid-template-columns:1fr">
     <div>
-      <h1>What the reps are up to.</h1>
-      <p class="updated">Last updated 1 October 2026</p>
+      <h1 data-i18n="h1Updates">What the reps are up to.</h1>
+      <p class="updated" data-i18n="updated">Last updated 1 October 2026</p>
     </div>
   </section>
 
   <section class="board">
     <article class="note">
-      <p class="k">In progress</p>
-      <h3>Creating our Instagram page</h3>
-      <p>Just getting started!! We're in the process of designing our comms and creating our page.</p>
+      <p class="k" data-i18n="u1k">In progress</p>
+      <h3 data-i18n="u1h">Creating our Instagram page</h3>
+      <p data-i18n="u1p">Just getting started. We're in the process of designing our comms and creating our page.</p>
       <div class="progress" role="progressbar" aria-label="Instagram page progress" aria-valuetext="Beginning">
         <div class="track"><i class="now"></i><i></i><i></i></div>
-        <div class="steps"><span><b>Beginning</b></span><span>Middle</span><span>Done</span></div>
+        <div class="steps" data-i18n="u1s"><span><b>Beginning</b></span><span>Middle</span><span>Done</span></div>
       </div>
     </article>
     <article class="note">
-      <p class="k">Drafting</p>
-      <h3>Writing a letter to the Sciences Po dean about the Wi-Fi</h3>
-      <p>We're drafting our letter right now; if the Wi-Fi has been failing you, tell me where (which building) in the feedback form.</p>
+      <p class="k" data-i18n="u2k">Drafting</p>
+      <h3 data-i18n="u2h">Writing a letter to the Sciences Po dean about the Wi-Fi</h3>
+      <p data-i18n="u2p">We're drafting our letter right now. If the Wi-Fi has been failing you, tell me where and when in the feedback form.</p>
       <div class="progress" role="progressbar" aria-label="Dean letter progress" aria-valuetext="Middle">
         <div class="track"><i class="on"></i><i class="now"></i><i></i></div>
-        <div class="steps"><span>Beginning</span><span><b>Middle</b></span><span>Done</span></div>
+        <div class="steps" data-i18n="u2s"><span>Beginning</span><span><b>Middle</b></span><span>Done</span></div>
       </div>
     </article>
   </section>
 
   <section class="weekwrap">
-    <h2>How a week works</h2>
+    <h2 data-i18n="weekH">How a week works</h2>
     <div class="week" id="week"></div>
-    <p class="weektext">Send feedback any time. Everything in by <b>Thursday 23:59</b> goes to administration on <b>Friday</b>. Anything later rolls into the next week.</p>
-    <button type="button" class="cta" data-view="feedback">Send feedback →</button>
+    <p class="weektext" data-i18n="weekText">Send feedback any time. Everything in by <b>Thursday 23:59</b> goes to administration on <b>Friday</b>. Anything later rolls into the next week.</p>
+    <button type="button" class="cta" data-view="feedback" data-i18n="cta">Send feedback →</button>
   </section>
 </main>
 
@@ -396,12 +399,12 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
 <main id="view-reps" class="page" hidden>
   <section class="reps-top">
     <div>
-      <h1>Meet your reps.</h1>
-      <p class="intro-line">Your 1A student reps on the Reims campus. Stop us in the hallway or send feedback anytime.</p>
+      <h1 data-i18n="h1Reps">Meet your reps.</h1>
+      <p class="intro-line" data-i18n="repsIntro">Your 1A student reps on the Reims campus. Stop us in the hallway or send feedback anytime.</p>
     </div>
     <figure class="photo">
       <img src="reps.jpg" alt="The three 1A student reps standing together on a street in Reims" width="1153" height="1200">
-      <figcaption>your 1A reps, Reims</figcaption>
+      <figcaption data-i18n="caption">your 1A reps, Reims</figcaption>
     </figure>
   </section>
 
@@ -409,35 +412,35 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
     <article class="note">
       <span class="hand">Aanchal</span>
       <h3>Aanchal Batwara</h3>
-      <p class="role">Student rep, 1A</p>
+      <p class="role" data-i18n="roleF">Student rep, 1A</p>
       <div class="rule"></div>
-      <p class="from">Hometown</p>
-      <p class="town">Seattle, USA</p>
+      <p class="from" data-i18n="hometown">Hometown</p>
+      <p class="town" data-i18n="townSea">Seattle, USA</p>
     </article>
     <article class="note">
       <span class="hand">Jaime</span>
       <h3>Jaime Avancena</h3>
-      <p class="role">Student rep, 1A</p>
+      <p class="role" data-i18n="roleM">Student rep, 1A</p>
       <div class="rule"></div>
-      <p class="from">Hometown</p>
-      <p class="town">Connecticut, USA</p>
+      <p class="from" data-i18n="hometown">Hometown</p>
+      <p class="town" data-i18n="townCT">Connecticut, USA</p>
     </article>
     <article class="note">
       <span class="hand">Mathias</span>
       <h3>Mathias Stempin</h3>
-      <p class="role">Student rep, 1A</p>
+      <p class="role" data-i18n="roleM">Student rep, 1A</p>
       <div class="rule"></div>
-      <p class="from">Hometown</p>
+      <p class="from" data-i18n="hometown">Hometown</p>
       <p class="town">Le Touquet, France</p>
     </article>
   </section>
 
   <section class="weekwrap" style="padding-top:56px">
-    <button type="button" class="cta" data-view="feedback" style="margin-top:0">Send feedback →</button>
+    <button type="button" class="cta" data-view="feedback" style="margin-top:0" data-i18n="cta">Send feedback →</button>
   </section>
 </main>
 
-<footer class="page">Sciences Po · Campus de Reims · first-year cohort 2026–27</footer>
+<footer class="page" data-i18n="footer">Sciences Po · Campus de Reims · first-year cohort 2026–27</footer>
 
 <script>
 // Paste your Formspree endpoint here (see SETUP at the top of the file).
@@ -458,6 +461,101 @@ let startView = "feedback";
 try { const h = location.hash.slice(1); if (views[h]) startView = h; } catch (e) {}
 show(startView);
 
+/* ---------- language (English / French) ---------- */
+const MARK = document.querySelector(".mark svg").outerHTML;
+const FR = {
+  who: "· Déléguée 1A · Sciences Po, campus de Reims",
+  tabFeedback: "Vos retours",
+  tabUpdates: "Nos actions",
+  tabReps: "Vos délégués",
+  h1Feedback: `Comment ça se passe <span class="mark">vraiment${MARK}</span>&nbsp;?`,
+  closesIn: "Les retours de la semaine se clôturent dans",
+  fine: `Le <b id="friday"></b>, je transmets tout à l'administration. Après cela, vos remarques seront traitées la semaine suivante.`,
+  lead: "Laissez ici vos commentaires bruts, sans filtre. Honnêtement, je suis moi-même un peu dépassée, alors j'apprécie vraiment les retours les plus sincères possibles.",
+  more1: "Ce n'est pas un Google Form (c'est mon GitHub personnel, sans aucun lien ni partage avec Sciences Po) et je ne collecte pas vos données personnelles.",
+  more2: "Rien de ce que vous écrivez ne sera retenu contre vous. Cela dit, ajoutez votre nom pour que je puisse vous recontacter si besoin. Je suis là pour vous soutenir シ",
+  sigRole: "Déléguée 1A, Reims 2026–27",
+  onList: "Déjà sur la liste",
+  tapHelp: "Cochez tout ce qui vous concerne aussi.",
+  i1t: "AU MOINS 5 minutes de pause pendant les cours de 2 heures",
+  i1d: "Au moins une, à chaque cours.",
+  i2t: "Les quiz d'histoire en fin de cours, ou après 30 minutes",
+  i2d: "Pour que l'enseignant puisse répondre aux questions avant qu'on soit évalués.",
+  i3t: "Des conférences de méthode qui ne suivent pas le cours magistral",
+  i3d: "Les conférences de ConLaw, de science politique et de LENC ne couvrent pas ce qu'on voit en amphi.",
+  i4t: "Les changements d'emploi du temps annoncés 48 h à l'avance, pas la veille",
+  i4d: "On a tous des contraintes et il faut du temps pour s'organiser. Déjà signalé au LSC par e-mail.",
+  qComment: "Qu'est-ce qui se passe&nbsp;?",
+  qCommentHelp: "Un cours, une règle, la charge de travail, la vie sur le campus&nbsp;? Soyez aussi précis que possible&nbsp;!",
+  phComment: "Écrivez ici…",
+  qFix: `Avez-vous des idées de solutions&nbsp;? <span class="opt">facultatif</span>`,
+  qName: `Votre nom <span class="opt">pour que je puisse vous recontacter</span>`,
+  phName: "Prénom et nom",
+  send: "Envoyer à Aanchal",
+  doneH: `Bien reçu. Ce sera transmis à l'administration le <span id="done-day"></span>.`,
+  doneP: "Si vous avez laissé votre nom, je vous contacterai peut-être pour plus de détails.",
+  again: "Envoyer un autre retour",
+  h1Updates: "Ce que font vos délégués.",
+  updated: "Dernière mise à jour : 1<sup>er</sup> octobre 2026",
+  u1k: "En cours",
+  u1h: "Création de notre page Instagram",
+  u1p: "On commence tout juste&nbsp;: on conçoit notre communication et on crée notre page.",
+  u1s: "<span><b>Début</b></span><span>Milieu</span><span>Terminé</span>",
+  u2k: "En rédaction",
+  u2h: "Lettre à la direction de Sciences Po au sujet du Wi-Fi",
+  u2p: "On rédige la lettre en ce moment. Si le Wi-Fi vous lâche, dites-moi où et quand dans le formulaire.",
+  u2s: "<span>Début</span><span><b>Milieu</b></span><span>Terminé</span>",
+  weekH: "Comment se passe une semaine",
+  weekText: "Envoyez vos retours quand vous voulez. Tout ce qui arrive avant <b>jeudi 23 h 59</b> est transmis à l'administration le <b>vendredi</b>. Le reste passe à la semaine suivante.",
+  cta: "Donner mon avis →",
+  h1Reps: "Vos délégués.",
+  repsIntro: "Vos délégués 1A sur le campus de Reims. Arrêtez-nous dans les couloirs ou envoyez vos retours quand vous voulez.",
+  caption: "vos délégués 1A, Reims",
+  roleF: "Déléguée 1A",
+  roleM: "Délégué 1A",
+  hometown: "Ville d'origine",
+  townSea: "Seattle, États-Unis",
+  townCT: "Connecticut, États-Unis",
+  footer: "Sciences Po · Campus de Reims · promotion 1A 2026–27",
+};
+const MSG = {
+  en: { empty: "Write something or tick an issue first.", off: "Submissions aren't switched on yet. Message Aanchal directly for now.",
+        sending: "Sending…", fail: "That didn't go through. Check your connection and try again.",
+        count: (n) => `${n} ticked. Thank you for your feedback! ☺ `, today: "today", day: "d",
+        days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], time: "23:59", toggle: "Français", toggleLang: "fr",
+        title: "1A Reims Student Rep" },
+  fr: { empty: "Écrivez quelque chose ou cochez un point d'abord.", off: "Les envois ne sont pas encore activés. Écrivez directement à Aanchal pour l'instant.",
+        sending: "Envoi…", fail: "L'envoi a échoué. Vérifiez votre connexion et réessayez.",
+        count: (n) => `${n} coché${n > 1 ? "s" : ""}. Merci pour votre retour ! ☺ `, today: "aujourd'hui", day: "j",
+        days: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"], time: "23 h 59", toggle: "English", toggleLang: "en",
+        title: "Délégués 1A Reims" },
+};
+const EN = {};
+document.querySelectorAll("[data-i18n]").forEach((el) => { EN[el.dataset.i18n] = el.innerHTML; });
+document.querySelectorAll("[data-i18n-ph]").forEach((el) => { EN[el.dataset.i18nPh] = el.placeholder; });
+
+let lang = "en";
+let lastFri = null;
+function setLang(next) {
+  lang = next;
+  const dict = lang === "fr" ? FR : EN;
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.innerHTML = dict[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-ph]").forEach((el) => { el.placeholder = dict[el.dataset.i18nPh]; });
+  document.documentElement.lang = lang;
+  document.title = MSG[lang].title;
+  const btn = document.getElementById("lang");
+  btn.textContent = MSG[lang].toggle;
+  btn.lang = MSG[lang].toggleLang;
+  try { localStorage.setItem("rep-lang", lang); } catch (e) {}
+  tick();
+  drawWeek();
+  updateCount();
+  if (lastFri) document.getElementById("done-day").textContent = fmt(lastFri);
+  const st = document.getElementById("status");
+  if (st) { st.textContent = ""; st.className = "status"; }
+}
+document.getElementById("lang").addEventListener("click", () => setLang(lang === "en" ? "fr" : "en"));
+
 /* ---------- weekly cutoff: Thursday 23:59 local ---------- */
 function nextCutoff(now) {
   const d = new Date(now);
@@ -467,41 +565,42 @@ function nextCutoff(now) {
   return d;
 }
 function adminFriday(now) { const f = nextCutoff(now); f.setDate(f.getDate() + 1); return f; }
-const fmt = (d) => d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+const fmt = (d) => d.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", { weekday: "long", day: "numeric", month: "long" });
+const fmtEN = (d) => d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
 
 function tick() {
   const now = new Date();
   const cut = nextCutoff(now);
-  document.getElementById("cutline").textContent = fmt(cut) + ", 23:59";
+  document.getElementById("cutline").textContent = fmt(cut) + ", " + MSG[lang].time;
   document.getElementById("friday").textContent = fmt(adminFriday(now));
   const total = Math.max(0, Math.floor((cut - now) / 1000));
   const d = Math.floor(total / 86400), h = Math.floor((total % 86400) / 3600);
   const m = Math.floor((total % 3600) / 60), sec = total % 60;
   const p = (n) => String(n).padStart(2, "0");
   document.getElementById("left").innerHTML =
-    (d ? `${d}<small>d</small>` : "") +
+    (d ? `${d}<small>${MSG[lang].day}</small>` : "") +
     `${h}<small>h</small>${p(m)}<small>min</small>${p(sec)}<small>s</small>`;
 }
-tick();
 setInterval(tick, 1000);
 
 /* ---------- week strip ---------- */
-(function () {
-  const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+function drawWeek() {
+  const names = MSG[lang].days;
   const today = (new Date().getDay() + 6) % 7;
   document.getElementById("week").innerHTML = names.map((n, i) => {
     const kind = i < 3 ? "open" : i === 3 ? "cut" : i === 4 ? "fri" : "";
-    return `<div class="day ${kind} ${i === today ? "today" : ""}"><i></i><span>${n}${i === today ? " · today" : ""}</span></div>`;
+    return `<div class="day ${kind} ${i === today ? "today" : ""}"><i></i><span>${n}${i === today ? " · " + MSG[lang].today : ""}</span></div>`;
   }).join("");
-})();
+}
 
 /* ---------- tick counter ---------- */
 const form = document.getElementById("fb");
 const countEl = document.getElementById("count");
-form.addEventListener("change", () => {
+function updateCount() {
   const n = form.querySelectorAll('input[name="issues"]:checked').length;
-  countEl.textContent = n ? `${n} ticked. Thank you for your feedback! ☺ ` : "";
-});
+  countEl.textContent = n ? MSG[lang].count(n) : "";
+}
+form.addEventListener("change", updateCount);
 
 /* ---------- submit ---------- */
 const statusEl = document.getElementById("status");
@@ -514,27 +613,29 @@ form.addEventListener("submit", async (e) => {
   const issues = [...form.querySelectorAll('input[name="issues"]:checked')].map((x) => x.value);
   if (!comment && issues.length === 0) {
     statusEl.className = "status err";
-    statusEl.textContent = "Write something or tick an issue first.";
+    statusEl.textContent = MSG[lang].empty;
     form.comment.focus();
     return;
   }
   if (form._gotcha.value) return;
   if (!FORM_ENDPOINT) {
     statusEl.className = "status err";
-    statusEl.textContent = "Submissions aren't switched on yet. Message Aanchal directly for now.";
+    statusEl.textContent = MSG[lang].off;
     return;
   }
-  const fri = fmt(adminFriday(new Date()));
+  const friDate = adminFriday(new Date());
+  const fri = fmtEN(friDate);
   const payload = {
     _subject: `Rep feedback · for ${fri}`,
     for_admin_on: fri,
+    language: lang === "fr" ? "French" : "English",
     name: form.name.value.trim() || "(no name)",
     me_too: issues.join("; ") || "(none)",
     comment: comment || "(none)",
     fix: form.fix.value.trim() || "(none)",
   };
   sendBtn.disabled = true;
-  statusEl.textContent = "Sending…";
+  statusEl.textContent = MSG[lang].sending;
   try {
     const res = await fetch(FORM_ENDPOINT, {
       method: "POST",
@@ -545,12 +646,13 @@ form.addEventListener("submit", async (e) => {
     form.reset();
     countEl.textContent = "";
     form.hidden = true;
-    document.getElementById("done-day").textContent = fri;
+    lastFri = friDate;
+    document.getElementById("done-day").textContent = fmt(friDate);
     document.getElementById("done").hidden = false;
     statusEl.textContent = "";
   } catch (err) {
     statusEl.className = "status err";
-    statusEl.textContent = "That didn't go through. Check your connection and try again.";
+    statusEl.textContent = MSG[lang].fail;
   } finally {
     sendBtn.disabled = false;
   }
@@ -561,6 +663,11 @@ document.getElementById("again").addEventListener("click", () => {
   form.hidden = false;
   form.comment.focus();
 });
+
+/* ---------- start ---------- */
+let savedLang = "en";
+try { if (localStorage.getItem("rep-lang") === "fr") savedLang = "fr"; } catch (e) {}
+setLang(savedLang);
 </script>
 </body>
 </html>
