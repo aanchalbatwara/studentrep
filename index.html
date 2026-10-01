@@ -215,6 +215,12 @@ button.go:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
 /* ---------- meet your reps ---------- */
 .intro-line { color: var(--muted); font-size: 1.05rem; margin-top: 14px; max-width: 52ch; }
+.reps-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px 56px; align-items: center; padding-block: 64px 64px; }
+.photo { position: relative; margin: 0; background: var(--paper); padding: 12px 12px 14px; transform: rotate(2deg);
+  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 14px 28px -16px rgba(30,20,25,.4); }
+.photo::before { content: ""; position: absolute; top: -12px; left: 50%; width: 110px; height: 26px; translate: -50% 0; rotate: -4deg; background: var(--tape); box-shadow: 0 0 0 1px rgba(0,0,0,.05); z-index: 1; }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 1153 / 1200; object-fit: cover; }
+.photo figcaption { font-family: var(--hand); font-size: 1.7rem; line-height: 1; color: var(--ink); padding-top: 10px; text-align: center; }
 .crew { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 36px; padding-top: 12px; }
 .crew .note { display: grid; gap: 4px; padding: 34px 28px 28px; align-content: start; }
 .crew .note:nth-child(1) { transform: rotate(-1.4deg); }
@@ -237,6 +243,8 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
   .letter { position: static; }
   .board { grid-template-columns: 1fr; gap: 40px; }
   .board .note:nth-child(2) { margin-top: 0; }
+  .reps-top { grid-template-columns: 1fr; padding-block: 40px 48px; gap: 40px; }
+  .photo { max-width: 420px; }
   .crew { grid-template-columns: 1fr; gap: 40px; }
   .crew .note:nth-child(n) { margin-top: 0; max-width: 380px; }
   .weekwrap { padding-top: 56px; }
@@ -369,11 +377,15 @@ footer.page { margin-top: 88px; font-size: .85rem; color: var(--muted); }
 
 <!-- ================= PAGE 3 — MEET YOUR REPS ================= -->
 <main id="view-reps" class="page" hidden>
-  <section class="top" style="grid-template-columns:1fr">
+  <section class="reps-top">
     <div>
       <h1>Meet your reps.</h1>
       <p class="intro-line">Your 1A student reps on the Reims campus. Stop us in the hallway or send feedback anytime.</p>
     </div>
+    <figure class="photo">
+      <img src="reps.jpg" alt="The three 1A student reps standing together on a street in Reims" width="1153" height="1200">
+      <figcaption>your 1A reps, Reims</figcaption>
+    </figure>
   </section>
 
   <section class="crew">
