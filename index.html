@@ -127,4 +127,351 @@ form { display: grid; gap: 44px; }
   font-family: var(--display); font-weight: 700; font-size: 1.55rem; letter-spacing: -0.03em; line-height: 1.15; margin: 0;
 }
 .help { color: var(--muted); font-size: .93rem; }
-.opt { font-family: var(--sans);
+.opt { font-family: var(--sans); font-weight: 500; font-size: .85rem; letter-spacing: 0; color: var(--muted); margin-left: 6px; }
+
+/* checklist */
+.checks { list-style: none; margin: 4px 0 0; padding: 0; }
+.checks li + li { border-top: 1px dashed var(--line); }
+.check {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 4px 16px; align-items: start;
+  padding: 14px 10px 14px 8px; margin-inline: -8px; cursor: pointer; transition: background .15s;
+}
+.check:hover { background: #faf9fa; }
+.check input {
+  appearance: none; -webkit-appearance: none; margin: 2px 0 0; width: 22px; height: 22px;
+  border: 2px solid var(--ink); background: var(--paper); cursor: pointer; display: grid; place-items: center;
+}
+.check input:checked {
+  border-color: var(--red);
+  background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 13.5 L9 19 L21.5 4' fill='none' stroke='%23d6001c' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;
+}
+.check input:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.check:has(input:checked) { background: var(--tint); }
+.check .t { font-weight: 600; line-height: 1.35; }
+.check .d { display: block; font-size: .9rem; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.count { font-size: .85rem; color: var(--red); font-weight: 600; min-height: 1.3em; }
+
+/* writing */
+.field { display: grid; gap: 8px; }
+textarea, input[type="text"] {
+  width: 100%; font: inherit; font-size: 1.08rem; color: var(--ink);
+  background: transparent; border: 0; border-radius: 0; padding: 8px 0 6px;
+  border-bottom: 2px solid var(--line); transition: border-color .2s;
+}
+textarea {
+  min-height: calc(2.1em * 6); resize: vertical; line-height: 2.1em; padding-top: 2px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(2.1em - 1px), var(--line) calc(2.1em - 1px), var(--line) 2.1em);
+  background-attachment: local; border-bottom-color: transparent;
+}
+textarea.short { min-height: calc(2.1em * 3); }
+::placeholder { color: #b3adb1; }
+textarea:focus, input[type="text"]:focus { outline: none; border-bottom-color: var(--red); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.send { display: grid; gap: 10px; }
+button.go {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%;
+  font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em;
+  background: var(--red); color: #fff; border: 0; border-radius: 0; padding: 20px 24px; cursor: pointer;
+  transition: background .2s;
+}
+button.go .arr { transition: transform .25s; }
+button.go:hover { background: var(--red-deep); }
+button.go:hover .arr { transform: translateX(6px); }
+button.go[disabled] { opacity: .6; cursor: progress; }
+button.go:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.status { font-size: .88rem; color: var(--muted); min-height: 1.3em; }
+.status.err { color: var(--red); font-weight: 600; }
+
+.done { display: grid; gap: 12px; justify-items: start; padding-block: 12px; }
+.done .hand { font-family: var(--hand); font-size: 3rem; line-height: .9; color: var(--red); transform: rotate(-3deg); }
+.done h3 { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(1.7rem, 4.5vw, 2.4rem); letter-spacing: -0.035em; line-height: 1.05; }
+.done p { color: var(--muted); }
+.linkbtn { font: inherit; font-weight: 600; background: none; border: 0; padding: 0; color: var(--red); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+
+/* ---------- updates ---------- */
+.updated { color: var(--muted); font-size: .95rem; margin-top: 14px; }
+.board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 40px; padding-top: 12px; }
+.board .note { transform: rotate(-1.2deg); display: grid; gap: 8px; padding: 32px 28px 30px; }
+.board .note:nth-child(2) { transform: rotate(1.4deg); margin-top: 22px; }
+.board .note h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 1.9rem); letter-spacing: -0.035em; line-height: 1.1; }
+.board .note p { color: var(--muted); }
+
+.weekwrap { display: grid; gap: 18px; padding-top: 72px; max-width: 720px; }
+.weekwrap h2 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; letter-spacing: -0.03em; margin: 0; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.day { display: grid; gap: 8px; }
+.day i { display: block; height: 10px; background: #d4d1d4; }
+.day.open i { background: #f2b9c0; }
+.day.cut i { background: var(--ink); }
+.day.fri i { background: var(--red); }
+.day span { font-size: .8rem; color: var(--muted); }
+.day.today span { color: var(--ink); font-weight: 700; }
+.day.today i { height: 18px; margin-top: -8px; }
+.weektext { color: var(--muted); max-width: 60ch; }
+.weektext b { color: var(--ink); font-weight: 600; }
+.cta { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--red); background: none; border: 0; padding: 0; cursor: pointer; justify-self: start; margin-top: 48px; }
+.cta:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+footer { margin-top: 88px; font-size: .85rem; color: var(--muted); }
+
+/* ---------- narrow ---------- */
+@media (max-width: 900px) {
+  .top { grid-template-columns: 1fr; padding-block: 40px 44px; gap: 44px; }
+  .note { max-width: 340px; }
+  .body { grid-template-columns: 1fr; gap: 40px; }
+  .letter { position: static; }
+  .board { grid-template-columns: 1fr; gap: 40px; }
+  .board .note:nth-child(2) { margin-top: 0; }
+  .weekwrap { padding-top: 56px; }
+}
+@media (max-width: 520px) {
+  .sheet { --c: 22px; padding: 30px 20px 26px; margin-inline: -6px; }
+  .note { margin-inline: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="page">
+    <p class="who">Aanchal Batwara <span>· Student rep, 1A · Sciences Po, Campus de Reims</span></p>
+    <nav aria-label="Pages">
+      <button type="button" id="tab-feedback" data-view="feedback">Feedback</button>
+      <button type="button" id="tab-updates" data-view="updates">What we're doing</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= PAGE 1 — FEEDBACK ================= -->
+<main id="view-feedback" class="page">
+
+  <section class="top">
+    <h1>How is college <span class="mark">actually<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 35 3, 70 13, 105 7 S 165 3, 197 8"/></svg></span> going?</h1>
+
+    <aside class="note" aria-label="This week's deadline">
+      <p class="k">This week's batch closes in</p>
+      <p class="big" id="left">--</p>
+      <p class="sub" id="cutline">Thursday, 23:59</p>
+      <div class="rule"></div>
+      <p class="fine">On <b id="friday">Friday</b> I take everything to administration. After that, your concerns will be addressed the following week.</p>
+    </aside>
+  </section>
+
+  <section class="body">
+    <div class="letter">
+      <p class="lead">Put your raw, unfiltered comments here. I'm honestly kind of overwhelmed myself, so I really appreciate the most honest feedback you can give me.</p>
+      <p class="more">This isn't a Google Form (it's my personal GitHub with no connection or sharing settings with Sciences Po) and I'm not collecting your personal info.</p>
+      <p class="more">Nothing you write will be taken against you. With that, please add your name, so I can reach out for more detail if needed. It also helps us make a stronger argument to the administration.</p>
+      <div class="sig">
+        <span class="hand">Aanchal</span>
+        <span class="role">Student rep, 1A Reims 2026–27</span>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <form id="fb" novalidate>
+        <div class="part">
+          <h2>Already on the list</h2>
+          <p class="help">Tap anything that has impacted you too.</p>
+          <ul class="checks">
+            <li><label class="check" for="i1"><input type="checkbox" id="i1" name="issues" value="5-minute break in 2-hour classes"><span><span class="t">A 5-minute break in 2-hour classes</span><span class="d">At least one, every time.</span></span></label></li>
+            <li><label class="check" for="i2"><input type="checkbox" id="i2" name="issues" value="History quiz timing"><span><span class="t">History quizzes at the end of class, or after 30 minutes</span><span class="d">So the instructor can answer questions before we're tested.</span></span></label></li>
+            <li><label class="check" for="i3"><input type="checkbox" id="i3" name="issues" value="Seminars not matching lecture (ConLaw / PoliSci / LENC)"><span><span class="t">Seminars that don't match lecture</span><span class="d">ConLaw, Political Science and LENC seminars aren't covering what we do in lecture.</span></span></label></li>
+            <li><label class="check" for="i4"><input type="checkbox" id="i4" name="issues" value="48-hour notice for class reschedules"><span><span class="t">Reschedules posted 48 hours ahead, not the day before</span><span class="d">People have conflicts and need time to sort them out. Already raised with LSC by email.</span></span></label></li>
+          </ul>
+          <p class="count" id="count"></p>
+        </div>
+
+        <div class="field">
+          <label for="comment">What's going on?</label>
+          <p class="help">A class, a policy, workload, campus life? Please be as specific as you can!</p>
+          <textarea id="comment" name="comment" placeholder="Start typing…"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="fix">Are there any solutions you think could fix it? <span class="opt">optional</span></label>
+          <textarea id="fix" name="fix" class="short"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="name">Your name <span class="opt">so I can follow up</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="First and last">
+        </div>
+
+        <div class="hp" aria-hidden="true"><label for="_gotcha">Leave empty</label><input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+
+        <div class="send">
+          <button type="submit" class="go" id="send"><span>Send to Aanchal</span><span class="arr">→</span></button>
+          <p class="status" id="status" role="status"></p>
+        </div>
+      </form>
+
+      <div class="done" id="done" hidden>
+        <span class="hand">merci!</span>
+        <h3>Got it. This goes to admin on <span id="done-day">Friday</span>.</h3>
+        <p>If you left your name I may message you for details.</p>
+        <button type="button" class="linkbtn" id="again">Send another</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= PAGE 2 — UPDATES ================= -->
+<main id="view-updates" class="page" hidden>
+  <section class="top" style="grid-template-columns:1fr">
+    <div>
+      <h1>What the reps are up to.</h1>
+      <p class="updated">Last updated 1 October 2026</p>
+    </div>
+  </section>
+
+  <section class="board">
+    <article class="note">
+      <p class="k">In progress</p>
+      <h3>Creating our Instagram page</h3>
+      <p>One place to follow what we raise each Friday and what comes back.</p>
+    </article>
+    <article class="note">
+      <p class="k">Drafting</p>
+      <h3>Writing a letter to the Sciences Po dean about the Wi-Fi</h3>
+      <p>If it's been failing you, tell me where and when in the feedback form.</p>
+    </article>
+  </section>
+
+  <section class="weekwrap">
+    <h2>How a week works</h2>
+    <div class="week" id="week"></div>
+    <p class="weektext">Send feedback any time. Everything in by <b>Thursday 23:59</b> goes to administration on <b>Friday</b>. Anything later rolls into the next week.</p>
+    <button type="button" class="cta" data-view="feedback">Send feedback →</button>
+  </section>
+</main>
+
+<footer class="page">Sciences Po · Campus de Reims · first-year cohort 2026–27</footer>
+
+<script>
+// Paste your Formspree endpoint here (see SETUP at the top of the file).
+const FORM_ENDPOINT = "";
+
+/* ---------- pages ---------- */
+const views = { feedback: document.getElementById("view-feedback"), updates: document.getElementById("view-updates") };
+function show(key) {
+  for (const k in views) {
+    views[k].hidden = k !== key;
+    document.getElementById("tab-" + k).setAttribute("aria-current", k === key ? "page" : "false");
+  }
+  try { history.replaceState(null, "", key === "updates" ? "#updates" : "#"); } catch (e) {}
+  try { window.scrollTo({ top: 0 }); } catch (e) { window.scrollTo(0, 0); }
+}
+document.querySelectorAll("[data-view]").forEach((b) => b.addEventListener("click", () => show(b.dataset.view)));
+let startView = "feedback";
+try { if (location.hash === "#updates") startView = "updates"; } catch (e) {}
+show(startView);
+
+/* ---------- weekly cutoff: Thursday 23:59 local ---------- */
+function nextCutoff(now) {
+  const d = new Date(now);
+  d.setDate(d.getDate() + ((4 - d.getDay() + 7) % 7));
+  d.setHours(23, 59, 59, 999);
+  if (d < now) d.setDate(d.getDate() + 7);
+  return d;
+}
+function adminFriday(now) { const f = nextCutoff(now); f.setDate(f.getDate() + 1); return f; }
+const fmt = (d) => d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+
+function tick() {
+  const now = new Date();
+  const cut = nextCutoff(now);
+  document.getElementById("cutline").textContent = fmt(cut) + ", 23:59";
+  document.getElementById("friday").textContent = fmt(adminFriday(now));
+  const mins = Math.max(0, Math.floor((cut - now) / 60000));
+  const d = Math.floor(mins / 1440), h = Math.floor((mins % 1440) / 60), m = mins % 60;
+  document.getElementById("left").innerHTML = d
+    ? `${d}<small>d</small>${h}<small>h</small>`
+    : `${h}<small>h</small>${String(m).padStart(2, "0")}<small>min</small>`;
+}
+tick();
+setInterval(tick, 30000);
+
+/* ---------- week strip ---------- */
+(function () {
+  const names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const today = (new Date().getDay() + 6) % 7;
+  document.getElementById("week").innerHTML = names.map((n, i) => {
+    const kind = i < 3 ? "open" : i === 3 ? "cut" : i === 4 ? "fri" : "";
+    return `<div class="day ${kind} ${i === today ? "today" : ""}"><i></i><span>${n}${i === today ? " · today" : ""}</span></div>`;
+  }).join("");
+})();
+
+/* ---------- tick counter ---------- */
+const form = document.getElementById("fb");
+const countEl = document.getElementById("count");
+form.addEventListener("change", () => {
+  const n = form.querySelectorAll('input[name="issues"]:checked').length;
+  countEl.textContent = n ? `${n} ticked. Thank you, every one counts.` : "";
+});
+
+/* ---------- submit ---------- */
+const statusEl = document.getElementById("status");
+const sendBtn = document.getElementById("send");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  statusEl.className = "status";
+  const comment = form.comment.value.trim();
+  const issues = [...form.querySelectorAll('input[name="issues"]:checked')].map((x) => x.value);
+  if (!comment && issues.length === 0) {
+    statusEl.className = "status err";
+    statusEl.textContent = "Write something or tick an issue first.";
+    form.comment.focus();
+    return;
+  }
+  if (form._gotcha.value) return;
+  if (!FORM_ENDPOINT) {
+    statusEl.className = "status err";
+    statusEl.textContent = "Submissions aren't switched on yet. Message Aanchal directly for now.";
+    return;
+  }
+  const fri = fmt(adminFriday(new Date()));
+  const payload = {
+    _subject: `Rep feedback · for ${fri}`,
+    for_admin_on: fri,
+    name: form.name.value.trim() || "(no name)",
+    me_too: issues.join("; ") || "(none)",
+    comment: comment || "(none)",
+    fix: form.fix.value.trim() || "(none)",
+  };
+  sendBtn.disabled = true;
+  statusEl.textContent = "Sending…";
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(res.status);
+    form.reset();
+    countEl.textContent = "";
+    form.hidden = true;
+    document.getElementById("done-day").textContent = fri;
+    document.getElementById("done").hidden = false;
+    statusEl.textContent = "";
+  } catch (err) {
+    statusEl.className = "status err";
+    statusEl.textContent = "That didn't go through. Check your connection and try again.";
+  } finally {
+    sendBtn.disabled = false;
+  }
+});
+
+document.getElementById("again").addEventListener("click", () => {
+  document.getElementById("done").hidden = true;
+  form.hidden = false;
+  form.comment.focus();
+});
+</script>
+</body>
+</html>
