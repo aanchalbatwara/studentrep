@@ -92,7 +92,7 @@ h1 {
 }
 .note .k { font-size: .82rem; font-weight: 600; color: var(--red); }
 .note .big {
-  font-family: var(--display); font-weight: 800; font-size: 2.7rem; line-height: 1; letter-spacing: -0.04em;
+  font-family: var(--display); font-weight: 800; font-size: 2.3rem; line-height: 1; letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums; margin-block: 6px 4px; white-space: nowrap;
 }
 .note .big small { font-size: .5em; font-weight: 700; letter-spacing: -0.01em; color: var(--muted); margin-inline: .08em .25em; }
@@ -387,14 +387,16 @@ function tick() {
   const cut = nextCutoff(now);
   document.getElementById("cutline").textContent = fmt(cut) + ", 23:59";
   document.getElementById("friday").textContent = fmt(adminFriday(now));
-  const mins = Math.max(0, Math.floor((cut - now) / 60000));
-  const d = Math.floor(mins / 1440), h = Math.floor((mins % 1440) / 60), m = mins % 60;
-  document.getElementById("left").innerHTML = d
-    ? `${d}<small>d</small>${h}<small>h</small>`
-    : `${h}<small>h</small>${String(m).padStart(2, "0")}<small>min</small>`;
+  const total = Math.max(0, Math.floor((cut - now) / 1000));
+  const d = Math.floor(total / 86400), h = Math.floor((total % 86400) / 3600);
+  const m = Math.floor((total % 3600) / 60), sec = total % 60;
+  const p = (n) => String(n).padStart(2, "0");
+  document.getElementById("left").innerHTML =
+    (d ? `${d}<small>d</small>` : "") +
+    `${h}<small>h</small>${p(m)}<small>min</small>${p(sec)}<small>s</small>`;
 }
 tick();
-setInterval(tick, 30000);
+setInterval(tick, 1000);
 
 /* ---------- week strip ---------- */
 (function () {
